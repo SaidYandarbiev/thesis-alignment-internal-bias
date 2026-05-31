@@ -1,0 +1,32 @@
+{
+  "experiment_name": "biasdpo_religion_extended",
+  "description": "Baseline + BiasDPO-religion-extended SFT + BiasDPO-religion-extended DPO. Single-axis religion alignment trained on filtered original BiasDPO + LLM-generated religion extension (~1052).",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (no alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "biasdpo_religion_extended_sft",
+      "label": "BiasDPO Religion-Extended SFT",
+      "model_id": "../checkpoints/mistral7b_biasdpo_religion_extended_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "biasdpo_religion_extended_dpo",
+      "label": "BiasDPO Religion-Extended DPO",
+      "model_id": "../checkpoints/mistral7b_biasdpo_religion_extended_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "biasdpo_religion_extended_sft": "#10b981",
+    "biasdpo_religion_extended_dpo": "#059669"
+  }
+}

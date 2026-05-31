@@ -1,0 +1,32 @@
+{
+  "experiment_name": "biasdpo_gender_extended",
+  "description": "Baseline + BiasDPO-gender-extended SFT + BiasDPO-gender-extended DPO. Single-axis gender alignment trained on filtered original BiasDPO (~587) + LLM-generated gender extension (~1014).",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (no alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "biasdpo_gender_extended_sft",
+      "label": "BiasDPO Gender-Extended SFT",
+      "model_id": "../checkpoints/mistral7b_biasdpo_gender_extended_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "biasdpo_gender_extended_dpo",
+      "label": "BiasDPO Gender-Extended DPO",
+      "model_id": "../checkpoints/mistral7b_biasdpo_gender_extended_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "biasdpo_gender_extended_sft": "#3b82f6",
+    "biasdpo_gender_extended_dpo": "#dc2626"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "experiment_name": "seq_race_dpo_to_religion_dpo",
+  "description": "Sequential DPO: race followed by religion",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (No Alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "stage1_race_dpo",
+      "label": "Stage 1: Race DPO",
+      "model_id": "../checkpoints/mistral7b_biasdpo_race_extended_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "seq_race_dpo_to_religion_dpo",
+      "label": "Stage 2: +Religion DPO",
+      "model_id": "../checkpoints/seq_race_dpo_to_religion_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "stage1_race_dpo": "#3b82f6",
+    "seq_race_dpo_to_religion_dpo": "#10b981"
+  }
+}

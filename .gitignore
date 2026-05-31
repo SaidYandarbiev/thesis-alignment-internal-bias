@@ -1,0 +1,64 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs
+logs/
+*.log
+*.out
+*.err
+
+# Model checkpoints / adapters
+checkpoints/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Generated results / outputs
+results/
+external_results/
+aggregated_results/
+
+# Generated analysis outputs
+analysis/internal/
+
+# Large internal analysis outputs
+internal_analysis/outputs/
+internal_analysis/results/
+
+# Optional: ignore generated analysis summaries if you do not want them in GitHub
+# analysis/
+
+# Data: ignore all data by default, except documentation and small examples
+data/*
+!data/README.md
+!data/examples/
+!data/examples/**
+*.parquet
+*.arrow
+
+# Keep JSONL rule commented for now, because we may want selected data examples
+# *.jsonl
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Cluster-specific job scripts with hardcoded local/HPC paths
+scripts/
+
+# Cluster-specific job generation helpers
+generate_analysis.py
+generate_sequential.py

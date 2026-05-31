@@ -1,0 +1,35 @@
+# =====================================================
+# Master Thesis: Effect of Alignment on Internal Associations
+# Full dependency list
+# =====================================================
+# Install with: pip install -r requirements.txt
+# On systems without venv: pip install -r requirements.txt --break-system-packages
+
+# --- Core ML & Model ---
+torch>=2.1.0
+transformers>=4.40.0
+peft>=0.10.0
+trl>=0.8.0
+datasets>=2.18.0
+accelerate>=0.28.0
+
+# --- Evaluation Harness (CrowS-Pairs) ---
+lm-eval>=0.4.0
+
+# --- Scientific Computing ---
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+
+# --- Visualisation ---
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# --- Network Analysis ---
+networkx>=3.1
+python-louvain>=0.16
+
+# --- Flash Attention (optional, for Ampere+ GPUs) ---
+# Uncomment if your supercomputer has A100/H100/RTX 4090
+# flash-attn>=2.5.0

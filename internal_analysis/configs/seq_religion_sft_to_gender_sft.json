@@ -1,0 +1,32 @@
+{
+  "experiment_name": "seq_religion_sft_to_gender_sft",
+  "description": "Sequential SFT: religion followed by gender",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (No Alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "stage1_religion_sft",
+      "label": "Stage 1: Religion SFT",
+      "model_id": "../checkpoints/mistral7b_biasdpo_religion_extended_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "seq_religion_sft_to_gender_sft",
+      "label": "Stage 2: +Gender SFT",
+      "model_id": "../checkpoints/seq_religion_sft_to_gender_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "stage1_religion_sft": "#3b82f6",
+    "seq_religion_sft_to_gender_sft": "#10b981"
+  }
+}

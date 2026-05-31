@@ -1,0 +1,32 @@
+{
+  "experiment_name": "biasdpo_full",
+  "description": "Baseline + BiasDPO-full SFT + BiasDPO-full DPO. The general alignment experiment trained on the entire BiasDPO dataset.",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (no alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "biasdpo_sft",
+      "label": "BiasDPO SFT",
+      "model_id": "../checkpoints/mistral7b_biasdpo_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "biasdpo_dpo",
+      "label": "BiasDPO DPO",
+      "model_id": "../checkpoints/mistral7b_biasdpo_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "biasdpo_sft": "#3b82f6",
+    "biasdpo_dpo": "#dc2626"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "experiment_name": "biasdpo_race_extended",
+  "description": "Baseline + BiasDPO-race-extended SFT + BiasDPO-race-extended DPO. Single-axis race alignment trained on filtered original BiasDPO + LLM-generated race extension (~1036).",
+  "model_id": "mistralai/Mistral-7B-v0.3",
+  "checkpoints": [
+    {
+      "name": "baseline",
+      "label": "Baseline (no alignment)",
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "is_peft": false
+    },
+    {
+      "name": "biasdpo_race_extended_sft",
+      "label": "BiasDPO Race-Extended SFT",
+      "model_id": "../checkpoints/mistral7b_biasdpo_race_extended_sft",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    },
+    {
+      "name": "biasdpo_race_extended_dpo",
+      "label": "BiasDPO Race-Extended DPO",
+      "model_id": "../checkpoints/mistral7b_biasdpo_race_extended_dpo",
+      "is_peft": true,
+      "base_id": "mistralai/Mistral-7B-v0.3"
+    }
+  ],
+  "palette": {
+    "baseline": "#6b7280",
+    "biasdpo_race_extended_sft": "#8b5cf6",
+    "biasdpo_race_extended_dpo": "#a21caf"
+  }
+}
