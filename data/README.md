@@ -1,10 +1,8 @@
 # Data Directory
 
-This directory documents the expected local data layout for the thesis experiments.
+This directory contains the data files included with the repository and documents the expected local data layout for the thesis experiments.
 
-The full datasets are not included in this repository. Place the required files locally before running the training and evaluation scripts.
-
-## Expected files
+## Included files
 
 ```text
 data/
@@ -32,6 +30,8 @@ data/
 
 ## Notes
 
-The generated extension datasets are not included in this repository. They were used for the thesis experiments but are omitted from the public repository together with large checkpoints, logs, generated outputs, and full result folders.
+The repository includes the StereoSet development file and the cleaned gender, race, and religion extension files used in the thesis experiments.
+
+Large model checkpoints, LoRA adapters, logs, generated outputs, full benchmark outputs, generated plots, heatmaps, and result folders are not included because they are large, machine-specific, or generated during experiment execution.
 
 The original BiasDPO data is loaded or referenced by the relevant training scripts where applicable.
