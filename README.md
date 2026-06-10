@@ -258,6 +258,8 @@ This repository is intended to document and support the experiments reported in 
 
 To reproduce the full pipeline, users must provide the required datasets, create the checkpoint directories, and run the training, evaluation, and internal analysis scripts in the appropriate order.
 
+The numerical results and figures are reported in the thesis and appendices. The full generated result folders are not included in this repository because they are large and experiment-specific.
+
 ## Citation
 
 If you use this repository, please cite the accompanying thesis:
