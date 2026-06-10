@@ -58,7 +58,6 @@ The following files and folders are intentionally excluded from the repository:
 - full benchmark outputs;
 - generated plots and heatmaps;
 - cluster-specific SLURM job scripts;
-- full generated training datasets.
 
 These files are excluded because they are either large, machine-specific, or generated during experiment execution.
 
