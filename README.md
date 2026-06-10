@@ -10,7 +10,7 @@ The project evaluates aligned model checkpoints at two levels.
 
 1. **Behavioral bias evaluation**
    - StereoSet
-   - CrowS-Pairs
+   - CrowS-Pairs through `lm-evaluation-harness`
    - BBQ through `lm-evaluation-harness`
 
 2. **Internal representational analysis**
