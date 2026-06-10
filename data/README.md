@@ -1,20 +1,37 @@
 # Data Directory
 
-Place the following files here before running the pipeline:
+This directory documents the expected local data layout for the thesis experiments.
 
-## Required files:
+The full datasets are not included in this repository. Place the required files locally before running the training and evaluation scripts.
 
-- `SBIC.v2.trn.csv` — SBIC training split
-- `SBIC.v2.dev.csv` — SBIC development split  
-- `dev.json` — StereoSet evaluation data
+## Expected files
 
-## Generated files (created by generate_neutral_responses.py):
+```text
+data/
+|-- README.md
+|-- dev.json
+`-- extension/
+    |-- gender_extension_clean.jsonl
+    |-- race_extension_clean.jsonl
+    `-- religion_extension_clean.jsonl
+```
 
-- `neutral_responses_sbic.json` — Diverse neutral responses for SBIC groups
-- `neutral_responses_toxigen.json` — Diverse neutral responses for ToxiGen groups
+## Files
 
-## How to get the data:
+* `dev.json`
+  StereoSet development file used for StereoSet evaluation.
 
-- **SBIC**: Download from https://maartensap.com/social-bias-frames/
-- **StereoSet**: Download dev.json from https://github.com/moinnadeem/StereoSet
-- **ToxiGen**: Downloaded automatically from HuggingFace when running training scripts
+* `extension/gender_extension_clean.jsonl`
+  Generated and cleaned gender-axis preference data used for gender-specific alignment.
+
+* `extension/race_extension_clean.jsonl`
+  Generated and cleaned race-axis preference data used for race-specific alignment.
+
+* `extension/religion_extension_clean.jsonl`
+  Generated and cleaned religion-axis preference data used for religion-specific alignment.
+
+## Notes
+
+The generated extension datasets are not included in this repository. They were used for the thesis experiments but are omitted from the public repository together with large checkpoints, logs, generated outputs, and full result folders.
+
+The original BiasDPO data is loaded or referenced by the relevant training scripts where applicable.
