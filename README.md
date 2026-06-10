@@ -26,7 +26,7 @@ The goal is to test whether alignment primarily suppresses biased outputs, or wh
 ```text
 .
 |-- training/                  # SFT, DPO, and sequential alignment scripts
-|-- evaluation/                # StereoSet and CrowS-Pairs evaluation code
+|-- evaluation/                # StereoSet evaluation code
 |-- internal_analysis/         # probing, cosine, and network analysis code
 |-- internal_analysis/configs/ # checkpoint configuration files for analysis
 |-- data/                      # data documentation only; full datasets not included
@@ -42,7 +42,7 @@ This repository includes:
 
 - training scripts for general, parallel single-axis, and sequential SFT/DPO alignment;
 - custom StereoSet scoring code for causal language models;
-- CrowS-Pairs post-processing and analysis code;
+- CrowS-Pairs and BBQ were evaluated using lm-evaluation-harness; this repository includes the main training, StereoSet evaluation, internal analysis, and result aggregation code used for the thesis.
 - internal analysis scripts for probing, cosine similarity, and word association networks;
 - checkpoint configuration files for the internal analysis pipeline;
 - aggregation scripts used to summarize external and internal results.
@@ -169,7 +169,7 @@ The StereoSet evaluator in `evaluation/stereoset/evaluation.py` can then be used
 
 ### CrowS-Pairs
 
-CrowS-Pairs was evaluated using `lm-evaluation-harness`. The post-processing scripts in this repository analyze and compare the generated harness outputs.
+CrowS-Pairs was evaluated using `lm-evaluation-harness`.
 
 Example task names used in the thesis:
 
