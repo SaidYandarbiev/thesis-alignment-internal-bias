@@ -159,16 +159,26 @@ The following commands are intended to be run from the repository root.
 
 ### StereoSet
 
-StereoSet is evaluated using the custom causal-language-model scorer. The command below is an example for the unaligned baseline and can be adapted by replacing `--model-id` with a local aligned checkpoint path.
+StereoSet is evaluated using the custom causal-language-model scorer. The scorer writes per-sentence prediction scores, which are then passed to the StereoSet evaluator to compute LM Score, Stereotype Score, and ICAT.
+
+The commands below are intended to be run from the repository root.
 
 ```bash
+mkdir -p results/stereoset
+
 python evaluation/stereoset/stereoset_scorer.py \
   --model-id mistralai/Mistral-7B-v0.3 \
   --input-file data/dev.json \
-  --output-file results/stereoset/predictions_baseline.json
+  --output-file results/stereoset/predictions_baseline.json \
+  --dtype bfloat16
+
+python evaluation/stereoset/evaluation.py \
+  --gold-file data/dev.json \
+  --predictions-file results/stereoset/predictions_baseline.json \
+  --output-file results/stereoset/stereoset_results.json
 ```
 
-The StereoSet evaluator in `evaluation/stereoset/evaluation.py` can then be used to compute LM Score, Stereotype Score, and ICAT.
+For aligned models, replace `--model-id` with a local checkpoint path that can be loaded directly by `AutoModelForCausalLM`. If only LoRA adapter checkpoints are available, they must first be merged with the base model or loaded using a PEFT-aware evaluation script.
 
 ### CrowS-Pairs
 
@@ -183,6 +193,24 @@ crows_pairs_english_religion
 crows_pairs_english_socioeconomic
 ```
 
+Example command for an aligned LoRA checkpoint:
+
+```bash
+mkdir -p results/crows_pairs/mistral7b_biasdpo_race_extended_dpo
+
+python -m lm_eval run \
+  --model hf \
+  --model_args 'pretrained=mistralai/Mistral-7B-v0.3,dtype=bfloat16,attn_implementation=eager,peft=checkpoints/mistral7b_biasdpo_race_extended_dpo' \
+  --tasks crows_pairs_english_gender,crows_pairs_english_race_color,crows_pairs_english_religion,crows_pairs_english_socioeconomic \
+  --device cuda \
+  --batch_size 4 \
+  --output_path results/crows_pairs/mistral7b_biasdpo_race_extended_dpo \
+  --log_samples
+```
+
+For the unaligned baseline, omit the `peft=...` argument and use only the base model as `pretrained=...`.
+
+
 ### BBQ
 
 BBQ was evaluated through `lm-evaluation-harness` using:
@@ -192,7 +220,25 @@ bbq_ambig
 bbq_disambig
 ```
 
-The cluster-specific submission scripts used for these evaluations are not included in this repository.
+Example command for an aligned LoRA checkpoint:
+
+```bash
+mkdir -p results/bbq/mistral7b_biasdpo_race_extended_dpo
+
+python -m lm_eval run \
+  --model hf \
+  --model_args 'pretrained=mistralai/Mistral-7B-v0.3,dtype=bfloat16,attn_implementation=eager,peft=checkpoints/mistral7b_biasdpo_race_extended_dpo' \
+  --tasks bbq_ambig,bbq_disambig \
+  --device cuda \
+  --batch_size 4 \
+  --output_path results/bbq/mistral7b_biasdpo_race_extended_dpo \
+  --log_samples
+```
+
+For the unaligned baseline, omit the `peft=...` argument and use only the base model as `pretrained=...`.
+
+The cluster-specific SLURM and Apptainer submission scripts used for these evaluations are not included in this repository.
+
 
 ## Internal analysis
 
